@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Blood &amp; Guts | Old School Iron Log</title><style>*{box-sizing:border-box}body{margin:0;background:#0d1420;color:#f3f6fa;font:16px system-ui,-apple-system,sans-serif}header{padding:22px 16px;background:#1b2638}h1{font-size:24px;margin:0 0 6px}p{color:#bbc8d7;margin:6px 0}main{max-width:800px;margin:auto;padding:14px}nav{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 18px}nav a,.btn{background:#e8ba65;color:#1b1d22;border:0;border-radius:9px;padding:10px 12px;font-weight:700;text-decoration:none;display:inline-block;cursor:pointer}section{margin:20px 0 30px}h2{font-size:20px;margin:10px 0}.exercise{background:#1a2637;border:1px solid #344359;border-radius:13px;padding:13px;margin:10px 0}.exercise h3{font-size:16px;margin:0 0 4px}.target{color:#f0c781;font-size:13px;margin-bottom:9px}.entry{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:8px 0}.entry label{display:block;font-size:13px;color:#c7d4e5}.entry input{display:block;margin-top:4px;width:100%;background:#fff;color:#121820;border:1px solid #b7c5d8;border-radius:8px;font-size:18px;padding:10px;min-height:44px}.setlabel{font-size:12px;color:#aebed2;margin-top:10px}.foot{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.date{padding:10px;font-size:16px;border-radius:8px;max-width:100%}textarea{width:100%;border-radius:8px;padding:10px;font:inherit;min-height:70px}.status{color:#f0c781;font-size:13px}.hint{font-size:13px;color:#aebed2}button.secondary{background:#d7e0ea}.prev{font-size:12px;color:#b8c5d8;margin:5px 0}.entry.reps-only{grid-template-columns:1fr}.entry.reps-only label{max-width:280px}
+/* Show one training day at a time, including in static file previews. */
+main > section {display:none}
+main > section#day0 {display:block}
+main:has(> section:target) > section#day0 {display:none}
+main > section:target {display:block}
+nav a:focus-visible {outline:3px solid white;outline-offset:3px}
+/* Highlight follows the visible day even when file previews disable JavaScript. */
+main:not(:has(> section:target)) nav a[href="#day0"],
+main:has(> section#day0:target) nav a[href="#day0"],
+main:has(> section#day1:target) nav a[href="#day1"],
+main:has(> section#day2:target) nav a[href="#day2"],
+main:has(> section#day3:target) nav a[href="#day3"] {background:#fff;color:#152035}
+
+/* Native disclosure works even when a file preview blocks JavaScript. */
+.motivation{background:#1a2637;border:1px solid #45546c;border-radius:13px;padding:13px;margin:0 0 20px}
+.motivation summary{display:inline-block;list-style:none;background:#e8ba65;color:#192132;border-radius:9px;padding:12px 15px;font-weight:750;cursor:pointer;touch-action:manipulation}
+.motivation summary::-webkit-details-marker{display:none}
+.motivation summary:focus-visible{outline:3px solid white;outline-offset:3px}
+.motivation[open] summary{background:#fff}
+.quote-art{margin-top:14px;padding:24px 16px;border-radius:12px;background:linear-gradient(135deg,#182337,#31435c);border:1px solid #5a6c82;text-align:center}
+.quote-art .quote-kicker{color:#e8ba65;letter-spacing:2px;font-size:12px;font-weight:800;text-transform:uppercase}
+.quote-art blockquote{font-size:clamp(20px,5vw,29px);line-height:1.25;font-weight:850;color:white;margin:15px 0}
+.quote-art .quote-footer{font-size:12px;color:#c6d1e2;letter-spacing:1px}
+
+/* V9: 1990s underground bodybuilding / iron-gym visual redesign. */
+:root{color-scheme:dark;--iron:#0b0b0c;--panel:#171719;--panel2:#222225;--red:#bc1d23;--redhot:#f0443c;--steel:#a8a6a0;--cream:#f4efe5}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 50% -10%,#3d1417 0%,transparent 38%),repeating-linear-gradient(135deg,rgba(255,255,255,.013) 0 1px,transparent 1px 7px),#0c0c0d;color:var(--cream);font-family:Impact,'Arial Narrow',system-ui,-apple-system,sans-serif;letter-spacing:.12px}
+header{position:relative;overflow:hidden;background:linear-gradient(125deg,rgba(8,8,9,.96),rgba(37,12,14,.93)),repeating-linear-gradient(45deg,#1a1a1b 0 4px,#141416 4px 8px);border-bottom:4px solid var(--red);padding:27px 18px 25px;text-align:center}
+header:before{content:'EST. 1990s • UNDERGROUND IRON';display:block;font:700 10px system-ui,sans-serif;letter-spacing:3px;color:#c7a6a4;margin-bottom:12px}
+header:after{content:'NO SHORTCUTS • JUST WORK';display:block;color:#e0c7c4;font:800 10px system-ui,sans-serif;letter-spacing:2.2px;margin-top:15px}
+header h1{font-family:Impact,'Arial Black',sans-serif;font-size:clamp(35px,9vw,64px);font-stretch:condensed;text-transform:uppercase;letter-spacing:1px;line-height:.95;color:#f6f2e9;text-shadow:3px 3px 0 #721619;margin:0 auto 12px;max-width:650px}
+header p{font:500 13px/1.5 system-ui,sans-serif;color:#c6bdb9;max-width:470px;margin:auto}
+main{max-width:780px;padding:18px 14px 40px}
+nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:4px 0 18px}
+nav a,.btn{background:linear-gradient(#38383b,#202023);border:1px solid #66605d;border-bottom:3px solid #080808;color:#f3eee5;border-radius:3px;box-shadow:inset 0 1px rgba(255,255,255,.12);font:900 12px/1.2 system-ui,sans-serif;letter-spacing:.3px;text-align:center;text-transform:uppercase;padding:13px 5px;min-height:44px}
+nav a:active,.btn:active{transform:translateY(1px)}
+main:not(:has(> section:target)) nav a[href="#day0"],main:has(> section#day0:target) nav a[href="#day0"],main:has(> section#day1:target) nav a[href="#day1"],main:has(> section#day2:target) nav a[href="#day2"],main:has(> section#day3:target) nav a[href="#day3"]{background:linear-gradient(#e13a37,#a6171e);color:#fff;border:1px solid #ff6860;border-bottom:3px solid #65080c;box-shadow:0 0 0 1px #320e10,inset 0 1px rgba(255,255,255,.2)}
+section{margin:15px 0 30px}
+section h2{font-family:Impact,'Arial Black',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:clamp(23px,6vw,33px);border-left:5px solid var(--redhot);padding:6px 0 6px 12px;margin:17px 0}
+.exercise{background:linear-gradient(135deg,#222225,#151517);border:1px solid #454247;border-left:4px solid #982026;border-radius:4px;padding:15px 13px;margin:10px 0;box-shadow:0 5px 16px #0005}
+.exercise h3{font:800 17px/1.3 system-ui,sans-serif;color:#f6f1e9;margin:0 0 7px}
+.target{color:#f28c80;font:800 12px/1.4 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.25px}
+.prev{font:500 12px/1.5 system-ui,sans-serif;color:#c1b9b4;background:#0f0f10;border:1px solid #303034;padding:7px 9px;border-radius:2px;margin:9px 0}
+.setlabel{font:800 11px system-ui,sans-serif;text-transform:uppercase;letter-spacing:1.2px;color:#a9a5a1}
+.entry label{font:700 12px system-ui,sans-serif;color:#d0c9c2;text-transform:uppercase;letter-spacing:.4px}
+.entry input,.date,textarea{background:#f4f0e9!important;color:#161516!important;border:2px solid #a9a29a!important;border-radius:3px!important;font-family:system-ui,-apple-system,sans-serif!important}
+.entry input:focus,.date:focus,textarea:focus{outline:2px solid #e94a43;outline-offset:1px}
+.entry input{font-weight:750;font-size:19px}
+label:has(>.date),section>label:has(textarea){font:800 12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px;color:#e6dfd8}
+.date{display:block;margin:7px 0 15px}
+textarea{display:block;margin-top:7px}
+.foot{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.foot .btn{background:linear-gradient(#d32d30,#8f131b);border-color:#eb5554;color:#fff;font-size:12px;padding:13px 8px}
+.foot .btn.secondary{background:linear-gradient(#444447,#252527);border-color:#777071}
+.status{color:#f2b2a7;font:600 13px system-ui,sans-serif}
+.hint{font:500 12px/1.55 system-ui,sans-serif;color:#aca4a0;padding:10px 12px;border-left:2px solid #6b6461;background:#161416}
+.motivation{background:linear-gradient(140deg,#2b1114,#111112 65%);border:1px solid #703038;border-radius:4px;padding:13px;margin-bottom:14px}
+.motivation summary{display:block;text-align:center;background:linear-gradient(#cf3133,#8c121a);color:white;border:1px solid #f05751;border-bottom:3px solid #540b10;border-radius:3px;font:900 13px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.7px;padding:13px}
+.motivation[open] summary{background:linear-gradient(#f04b45,#ac1b23);color:#fff}
+.quote-art{background:radial-gradient(ellipse at center,#401a1d 0%,#121214 75%);border:2px solid #913238;border-radius:2px;padding:24px 14px}
+.quote-art .quote-kicker{color:#ff8b7f;font:900 11px system-ui,sans-serif;letter-spacing:2px}
+.quote-art blockquote{font-family:Impact,'Arial Black',sans-serif;font-size:clamp(23px,6vw,35px);line-height:1.15;text-transform:uppercase;letter-spacing:.4px;text-shadow:2px 2px #6b1519}
+.quote-art .quote-footer{color:#d7bbb4;font:700 10px system-ui,sans-serif;letter-spacing:1.2px}
+@media(max-width:390px){nav a{font-size:11px;padding:13px 3px}.foot{grid-template-columns:1fr}.exercise{padding:12px 10px}}
+</style></head><body><header><h1>Blood &amp; Guts<br/>Training Log</h1><p>Log your working-set weights and reps. Single-arm exercises use one entry for both sides.</p></header><main><nav aria-label="Choose training day"><a href="#day0" aria-current="page">Monday</a><a href="#day1">Wednesday</a><a href="#day2">Friday</a><a href="#day3">Sunday</a></nav><details class="motivation" id="motivation"><summary>🔥 Show today's motivation</summary><div class="quote-art" role="status"><div class="quote-kicker">Blood &amp; Guts · Old-School Motivation</div><blockquote id="daily-quote">The strongest rep is the one you earn with good form.</blockquote><div class="quote-footer">OLD SCHOOL IRON · SMART TRAINING · REAL PROGRESS</div></div></details><p class="hint">Weights and reps can be typed immediately. Saving workout history requires a browser that allows JavaScript and local storage. Export backups regularly.</p><section id="day0"><h2>Monday — Shoulders, Triceps &amp; Abs</h2><label>Workout date <input class="date" id="date0" type="date"/></label><div class="exercise"><h3>1. Seated DB shoulder press</h3><div class="target">Target: 6–10 · 1 working set</div><div class="prev" id="prev-0-0">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-0-0-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-0-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>2. Standing DB lateral raises</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-0-1">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-0-1-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-1-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>3. Single-arm cable lateral raises</h3><div class="target">Target: 10–15 each arm · 1 working set (same weight/reps each side)</div><div class="prev" id="prev-0-2">Previous: —</div><div class="setlabel">Both sides (one entry)</div><div class="entry"><label>Weight (kg)<input id="w-0-2-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-2-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>4. Dumbbell shrugs</h3><div class="target">Target: 10–12 · 1 working set</div><div class="prev" id="prev-0-3">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-0-3-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-3-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>5. Cable triceps pushdowns</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-0-4">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-0-4-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-4-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>6. Lying DB triceps extension (one DB, both hands)</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-0-5">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-0-5-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-0-5-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>7. Supported knee raises</h3><div class="target">Target: 8–12 · 2 working sets</div><div class="prev" id="prev-0-6">Previous: —</div><div class="setlabel">Set 1</div><div class="entry reps-only"><label>Reps<input id="r-0-6-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div><div class="setlabel">Set 2</div><div class="entry reps-only"><label>Reps<input id="r-0-6-1" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><label>Workout notes<textarea id="notes0" placeholder="How did it feel? Any pain or progress?"></textarea></label><div class="foot"><button class="btn" onclick="saveDay(0)" type="button">Save Monday workout</button><button class="btn secondary" onclick="exportCSV()" type="button">Export CSV backup</button></div><p aria-live="polite" class="status" id="status0"></p></section><section id="day1"><h2>Wednesday — Back &amp; Rear Delts</h2><label>Workout date <input class="date" id="date1" type="date"/></label><div class="exercise"><h3>1. Plate-loaded straight-bar pullover</h3><div class="target">Target: 10–12 · 1 working set</div><div class="prev" id="prev-1-0">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-1-0-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-0-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>2. Underhand lat pulldown</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-1-1">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-1-1-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-1-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>3. Iso-lateral high row</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-1-2">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-1-2-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-2-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>4. Single-arm DB row</h3><div class="target">Target: 8–12 each arm · 1 working set (same weight/reps each side)</div><div class="prev" id="prev-1-3">Previous: —</div><div class="setlabel">Both sides (one entry)</div><div class="entry"><label>Weight (kg)<input id="w-1-3-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-3-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>5. Low seated cable row</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-1-4">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-1-4-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-4-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>6. Standing bent-over DB flyes</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-1-5">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-1-5-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-1-5-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><label>Workout notes<textarea id="notes1" placeholder="How did it feel? Any pain or progress?"></textarea></label><div class="foot"><button class="btn" onclick="saveDay(1)" type="button">Save Wednesday workout</button><button class="btn secondary" onclick="exportCSV()" type="button">Export CSV backup</button></div><p aria-live="polite" class="status" id="status1"></p></section><section id="day2"><h2>Friday — Chest, Biceps &amp; Abs</h2><label>Workout date <input class="date" id="date2" type="date"/></label><div class="exercise"><h3>1. Smith machine flat bench press</h3><div class="target">Target: 6–8 · 1 working set</div><div class="prev" id="prev-2-0">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-2-0-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-0-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>2. Hammer Strength incline press</h3><div class="target">Target: 6–10 · 1 working set</div><div class="prev" id="prev-2-1">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-2-1-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-1-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>3. Pec deck</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-2-2">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-2-2-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-2-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>4. Barbell curls</h3><div class="target">Target: 6–10 · 1 working set</div><div class="prev" id="prev-2-3">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-2-3-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-3-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>5. DB concentration curls</h3><div class="target">Target: 8–12 each arm · 1 working set (same weight/reps each side)</div><div class="prev" id="prev-2-4">Previous: —</div><div class="setlabel">Both sides (one entry)</div><div class="entry"><label>Weight (kg)<input id="w-2-4-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-4-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>6. Seated abdominal crunch machine</h3><div class="target">Target: 10–15 · 2 working sets</div><div class="prev" id="prev-2-5">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-2-5-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-5-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div><div class="setlabel">Set 2</div><div class="entry"><label>Weight (kg)<input id="w-2-5-1" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-5-1" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>7. Cable Pallof press</h3><div class="target">Target: 10–12 each side · 1 working set (same weight/reps each side)</div><div class="prev" id="prev-2-6">Previous: —</div><div class="setlabel">Both sides (one entry)</div><div class="entry"><label>Weight (kg)<input id="w-2-6-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-2-6-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><label>Workout notes<textarea id="notes2" placeholder="How did it feel? Any pain or progress?"></textarea></label><div class="foot"><button class="btn" onclick="saveDay(2)" type="button">Save Friday workout</button><button class="btn secondary" onclick="exportCSV()" type="button">Export CSV backup</button></div><p aria-live="polite" class="status" id="status2"></p></section><section id="day3"><h2>Sunday — Legs &amp; Calves</h2><label>Workout date <input class="date" id="date3" type="date"/></label><div class="exercise"><h3>1. Leg extensions</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-3-0">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-0-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-0-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>2. 45° hack squat</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-3-1">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-1-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-1-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>3. 45° leg press</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-3-2">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-2-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-2-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>4. Lying leg curl</h3><div class="target">Target: 8–12 · 1 working set</div><div class="prev" id="prev-3-3">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-3-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-3-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>5. Romanian deadlift</h3><div class="target">Target: 8–10 · 1 working set</div><div class="prev" id="prev-3-4">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-4-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-4-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><div class="exercise"><h3>6. Standing calf raises</h3><div class="target">Target: 10–15 · 1 working set</div><div class="prev" id="prev-3-5">Previous: —</div><div class="setlabel">Set 1</div><div class="entry"><label>Weight (kg)<input id="w-3-5-0" inputmode="decimal" min="0" placeholder="e.g. 20" step="0.5" type="number"/></label><label>Reps<input id="r-3-5-0" inputmode="numeric" min="0" placeholder="e.g. 10" step="1" type="number"/></label></div></div><label>Workout notes<textarea id="notes3" placeholder="How did it feel? Any pain or progress?"></textarea></label><div class="foot"><button class="btn" onclick="saveDay(3)" type="button">Save Sunday workout</button><button class="btn secondary" onclick="exportCSV()" type="button">Export CSV backup</button></div><p aria-live="polite" class="status" id="status3"></p></section><script>
+function updateSelectedDay(){
+  const hash=location.hash;
+  const active=/^#day[0-3]$/.test(hash)?hash:'#day0';
+  document.querySelectorAll('nav a').forEach(a=>{
+    if(a.getAttribute('href')===active)a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('hashchange',updateSelectedDay);
+updateSelectedDay();
+const schema = [[1,1,1,1,1,1,2],[1,1,1,1,1,1],[1,1,1,1,1,2,1],[1,1,1,1,1,1]];
+const names = [["Seated DB shoulder press","Standing DB lateral raises","Single-arm cable lateral raises","Dumbbell shrugs","Cable triceps pushdowns","Lying DB triceps extension (one DB, both hands)","Supported knee raises"],["Plate-loaded straight-bar pullover","Underhand lat pulldown","Iso-lateral high row","Single-arm DB row","Low seated cable row","Standing bent-over DB flyes"],["Smith machine flat bench press","Hammer Strength incline press","Pec deck","Barbell curls","DB concentration curls","Seated abdominal crunch machine","Cable Pallof press"],["Leg extensions","45° hack squat","45° leg press","Lying leg curl","Romanian deadlift","Standing calf raises"]];
+const days=['Monday','Wednesday','Friday','Sunday'];
+const storeKey='bg_training_v3';
+function records(){try{return JSON.parse(localStorage.getItem(storeKey)||'[]')}catch(e){return []}}
+function saveDay(d){
+  try{
+    const sets=[];
+    for(let e=0;e<schema[d].length;e++){
+      const row=[];
+      for(let s=0;s<schema[d][e];s++){
+        const weightInput=document.getElementById(`w-${d}-${e}-${s}`);
+        const repsInput=document.getElementById(`r-${d}-${e}-${s}`);
+        row.push({weight:weightInput?weightInput.value:'',reps:repsInput?repsInput.value:''});
+      }
+      sets.push(row);
+    }
+    const rec={day:d,date:document.getElementById('date'+d).value||new Date().toISOString().slice(0,10),sets,notes:document.getElementById('notes'+d).value};
+    const all=records();all.push(rec);
+    localStorage.setItem(storeKey,JSON.stringify(all));
+    document.getElementById('status'+d).textContent='Workout saved on this device. Export a CSV backup regularly.';
+    updatePrevious();
+  }catch(err){document.getElementById('status'+d).textContent='Could not save in this preview. Try opening in Safari.'}
+}
+function updatePrevious(){
+  const all=records();
+  for(let d=0;d<4;d++){
+    const last=all.filter(r=>r.day===d).slice(-1)[0];if(!last)continue;
+    for(let e=0;e<schema[d].length;e++){
+      const old=last.sets[e]||[];
+      const vals=old.slice(0,schema[d][e]).map(x=>[(x.weight!==''&&x.weight!=null)?x.weight+' kg':'bodyweight',x.reps?x.reps+' reps':'—'].join(' / '));
+      const el=document.getElementById(`prev-${d}-${e}`);
+      if(el)el.textContent='Previous ('+last.date+'): '+vals.join(' | ');
+    }
+  }
+}
+function exportCSV(){
+  const rows=[['Date','Day','Exercise','Set','Weight (kg)','Reps','Notes']];
+  for(const rec of records()){
+    for(let e=0;e<rec.sets.length;e++){
+      const entries=rec.sets[e]||[];
+      for(let s=0;s<entries.length;s++){
+        const x=entries[s];rows.push([rec.date,days[rec.day],names[rec.day][e],s+1,x.weight||'',x.reps||'',rec.notes||'']);
+      }
+    }
+  }
+  const csv=rows.map(row=>row.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='blood-and-guts-workouts.csv';a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+try{for(let d=0;d<4;d++)document.getElementById('date'+d).value=new Date().toLocaleDateString('en-CA');updatePrevious()}catch(e){}
+
+// Original motivational lines, rotated daily. A static quote remains if scripts are blocked.
+const dailyQuotes=[
+  'The iron doesn’t care how old you are. Show up and do the work.',
+  'Old school grit. Modern discipline. One hard set at a time.',
+  'No shortcuts. No excuses. Just the next honest rep.',
+  'Fifty-eight years of experience. Still earning every rep.',
+  'The logbook never lies. Give it something worth recording.',
+  'Heavy enough to challenge you. Controlled enough to own it.',
+  'Built with iron. Maintained with discipline.',
+  'Age brings wisdom. Training brings strength.',
+  'No ego lifting. Make every rep count.',
+  'Old school means hard work, not reckless work.',
+  'The strongest rep is the one you earn with good form.',
+  'Progress is built one honest working set at a time.',
+  'Beat the logbook, not your joints.',
+  'Consistency makes ordinary sessions extraordinary.',
+  'Control the weight. Own every repetition.',
+  'Today’s effort is tomorrow’s confidence.',
+  'Train with purpose. Recover with patience.',
+  'You don’t need more noise. You need another good session.',
+  'Strong habits outlast strong motivation.',
+  'One more quality rep is progress.',
+  'Show up, focus, and let the logbook tell the story.',
+  'Discipline is doing the work even on quiet days.',
+  'The work is simple. The commitment is rare.',
+  'Strength is earned, never borrowed.',
+  'Leave the excuses outside. Bring your focus inside.',
+  'Your competition is the last entry in your logbook.'
+];
+try {
+  const now=new Date();
+  const dayIndex=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/86400000);
+  document.getElementById('daily-quote').textContent=dailyQuotes[dayIndex%dailyQuotes.length];
+} catch(e) {}
+</script></main></body></html>
